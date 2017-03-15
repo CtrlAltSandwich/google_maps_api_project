@@ -1,7 +1,8 @@
 //AIzaSyAj1RljIOaRskQUDGPp8nCj83zJaqORJtQ
 var map;
 var canvas = document.getElementById("map-canvas");
- var panorama;
+var panorama;
+var dots = 1;
 function street() {
     var long = Math.random() * -58 - 66;
     var lati = Math.random() *25 + 24;
@@ -80,10 +81,11 @@ function randomLocation(){
 console.log(sv);
         //panorama = new google.maps.StreetViewPanorama(document.getElementById('pan'));
 panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('map-canvas'),
+            document.getElementById('left'),
             {
               position: {lat: lati, lng: long},
               pov: {heading: 165, pitch: 0},
+                addressControl: false,
               zoom: 1
             });
       
@@ -92,9 +94,9 @@ panorama = new google.maps.StreetViewPanorama(
         sv.getPanorama({location: random, radius: 50}, processSVData);
 
       // Set up the map.
-        map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('right'), {
           center: random,
-          zoom: 16,
+          zoom: 1,
           streetViewControl: false
         });
     
@@ -124,7 +126,7 @@ function processSVData(data, status) {
           });
           panorama.setVisible(true);
 
-          marker.addListener('click', function() {
+         /* marker.addListener('click', function() {
             var markerPanoID = data.location.pano;
             // Set the Pano to use the passed panoID.
             panorama.setPano(markerPanoID);
@@ -132,20 +134,42 @@ function processSVData(data, status) {
               heading: 270,
               pitch: 0
             });
-            panorama.setVisible(true);
-             
-          });
+            panorama.setVisible(true); 
+          });*/
+        $("#map-canvas").hide();
+             $("#loading").hide();
+            $("#guessLocation").show();            
         } else {
           console.error('Street View data not found for this location.');
             $("#map-canvas").hide();
+            $("#guessLocation").hide();
+            $("#loading").show();
             randomLocation();
         }
 }
 
+    function loading(){
+        if(dots == 1){
+            $("h3").text("Loading.");
+            dots = 2; 
+        }else if(dots == 2){
+            $("h3").text("Loading..");
+            dots = 3;
+        }else {
+            $("h3").text("Loading...");
+             dots = 1;
+         }
+    }
+    
+    setInterval(function(){
+        loading();
+    }, 1500);
+
+
 
 $(document).ready(function(){
-    $("#pan").hide();
-    
-    
+    $("#loading").hide();
+$("#guessLocation").hide();
+
     
 });

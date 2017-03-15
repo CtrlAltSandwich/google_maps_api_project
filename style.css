@@ -1,4 +1,4 @@
-#map-canvas{
+#map-canvas, #guessLocation{
     height:100%;
     width:60%;
     margin:auto;
@@ -26,4 +26,25 @@ body{
     margin: auto;
     padding: 0;
     background: #e6ffe6;
+}
+
+#loading{
+    height:100%;
+    width:60%;
+    margin:auto;
+    border:5px solid purple;
+    background: #fe65ff;
+}
+
+H3{
+    text-align: center;
+    font-size: 36px;
+    font-family: 'Gloria Hallelujah', sans-serif;
+}
+
+#left, #right{
+    width: 49%;
+    float: left;
+    height:100%;
+        
 }

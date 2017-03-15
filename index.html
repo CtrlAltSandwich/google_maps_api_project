@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <title>Google Maps API Project</title>
     <link rel = "stylesheet" type = "text/css" href = "style.css">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Play" rel="stylesheet">
 </head>
 <body>
-   <div id ="map-canvas"></div>
-   <div id ="pan"></div>
+  <div id = 'map-canvas'></div>
+   <div id ="guessLocation">
+       <div id = "left"></div>
+       <div id = "right"></div>
+   </div>
+   <div id ="loading">
+       <h3>Loading...</h3>
+   </div>
     <input type = "text" placeholder ="Enter a location" id = "user-input">
     <!--<button onclick = 'randomLocation()'>Randomly Generated Location</button>-->
      <button id ="guess">Randomly Generated Location</button>   
